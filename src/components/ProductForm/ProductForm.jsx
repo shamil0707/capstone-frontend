@@ -2,13 +2,15 @@
 
 
 import axios from "axios";
-import { useForm } from "react-hook-form"
+import { useForm, } from "react-hook-form"
 
 export default function ProductForm(props) {
+
   const {
     register,
     handleSubmit,
     watch,
+    
     formState: { errors },
   } = useForm()
 
@@ -16,27 +18,24 @@ export default function ProductForm(props) {
 
  const onSubmit = (data) => {
   console.log(data)
+  
 
   const formData = new FormData()
   formData.append("picture", data.picture[0])
    delete data.picture
 formData.append("productDetails",JSON.stringify(data))
-axios.post("http://localhost:3000/api/v1/products", formData)
+axios.post(`${import.meta.env.VITE_BASE_URL}/products`, formData,{withCredentials: true})
 .then(res=>console.log(res))
+
 .catch(err=>console.log(err))
 
  }
 
-
-
-
-
-
- console.log(watch("example"))
+ 
   
   return (
    
-    <form className="py-8 flex flex-col gap-2 max-w-2xl w-full " onSubmit={handleSubmit(onSubmit)}>
+  <form className="py-8 flex flex-col gap-2 max-w-2xl w-full " onSubmit={handleSubmit(onSubmit)}>
 <div className="flex flex-col gap-2">
         <label htmlFor="title">Title</label>
         <input className="p-2 border border-slate-500" {...register("title",{required: true,maxLength:40})} />
@@ -89,7 +88,7 @@ axios.post("http://localhost:3000/api/v1/products", formData)
 
 
      <div className="flex flex-row justify-center items-center mt-2">
-        <input className="bg-black text-white font-semibold rounded-md px-4 h-10  hover:bg-slate-800 cursor-pointer " type="submit" value="Add product" />
+        <input className="bg-black text-white font-semibold rounded-md px-4 h-10  hover:bg-slate-800 cursor-pointer " type ="submit"  value="Add product" />
      </div>
     </form>
   )

@@ -4,7 +4,7 @@ import ProductForm from '../components/ProductForm/ProductForm'
 import { useLoaderData } from 'react-router-dom'
 
 export async function loader() {
-  const res = await axios.get('http://localhost:3000/api/v1/categories')
+  const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/categories`)
   const categories = res.data
   return { categories }
 

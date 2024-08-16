@@ -6,7 +6,9 @@ function Root(props) {
   return (
     <>
     <Header/>
+    
     <Outlet />
+    
     <footer></footer>
 
 

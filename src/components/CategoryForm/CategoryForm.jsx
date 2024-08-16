@@ -10,7 +10,7 @@ export default function CategoryForm() {
   } = useForm()
 
   const onSubmit = (data) =>{
-    axios.post('http://localhost:3000/api/v1/categories',data)
+    axios.post(`${import.meta.env.VITE_BASE_URL}/categories`,data,{withCredentials: true})
     .then(res=>{
         console.log(res)
     })
@@ -31,18 +31,18 @@ export default function CategoryForm() {
 
 <div className="flex flex-col gap-2">
         <label htmlFor="title">Title</label>
-        <input className="border border-slate-500" {...register("title",{required: true,maxLength:40})} />
+        <input className="p-2 border border-slate-500" {...register("title",{required: true,maxLength:40})} />
         {errors.title?.type === 'required' && <span className="text-xs text-red-600">Title is required</span>}
         {errors.title?.type === 'maxLength' && <span className="text-xs text-red-600">Title cannot exceed 40 character</span>}
       </div>
       <div className="flex flex-col gap-2" >
         <label htmlFor="slug">Slug</label>
-        <input className="border border-slate-500" {...register("slug",{required: true})} />
+        <input className="p-2 border border-slate-500" {...register("slug",{required: true})} />
         {errors.slug && <span className="text-xs text-red-600">Slug is required</span>}
       </div>
       <div className="flex flex-col gap-2">
         <label htmlFor="thumbnail">Thumbnail</label>
-        <input className="border border-slate-500" {...register("thumbnail",{required: true})} />
+        <input className="p-2 border border-slate-500" {...register("thumbnail",{required: true})} />
         {errors.thumbnail && <span className="text-xs text-red-600">Thumbnail is required</span>}
       </div>
      <div className="flex flex-row justify-center items-center mt-2">

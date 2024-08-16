@@ -11,25 +11,34 @@ function Header (props) {
     },0)
 
   return (
+  
     <header className='py-1 h-16 border-b '>
        <div className='h-full container mx-auto px-4 flex flex-row justify-between items-center'>
-        <Link to={'/'}>
-        <span className='text-xl font-semibold'>DR Store</span>
+        <Link to={'/home'}>
+        <span className='text-xl font-semibold'>ShopZy</span>
         </Link>
-        <Link to={'/products'}>
-        <span className='text-md font-semibold'> Products</span>
+       <input className='text-black border px-2 rounded-md' type="text"  placeholder='search' />
+      <div className=' flex-row items-between px- mt-3'>
+      <div className='flex flex-row gap-4 text-'>
+        <Link to={'/logout'}>
+        <span className='text-xs font-semibold'>Login</span>
         </Link>
-        <div className='flex flex-row gap-4 text-'>
-        <Link to={'/add-category'}>
-        <span className='text-md font-semibold'>Add category</span>
+        <Link to={'/signup'}>
+        <span className='text-xs font-semibold'>Signup</span>
         </Link>
-        <Link to={'/add-product'}>
-        <span className='text-md font-semibold'>Add product</span>
+        <Link to={'/profile'}>
+        <span className='text-xs font-semibold'>UserProfile</span>
         </Link>
-
         </div>
-        
-
+      </div>
+        {/* <div className='flex flex-row gap-4 text-'>
+<Link to={'/add-category'}>
+<span className='text-md font-semibold'>Add category</span>
+</Link>
+<Link to={'/add-product'}>
+<span className='text-md font-semibold'>Add product</span>
+</Link> 
+</div> */}
 
         <Link to={'/cart'} className='relative'>
         <>
@@ -41,6 +50,7 @@ function Header (props) {
         </Link>
        </div>  
       </header>
+      
   )
 }
 
